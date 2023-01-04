@@ -1,0 +1,43 @@
+﻿@model List<Item>
+@{
+    ViewBag.Title = "Item Manager";
+}
+
+<h1>Item Manager</h1>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Item ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Cost</th>
+            <th>Category ID</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ItemId</td>
+                <td>@item.Name</td>
+                <td>@item.Price.ToString("c")</td>
+                <td>@item.Cost.ToString("c")</td>
+                <td>@item.CategoryId</td>
+                <td>
+                    <a asp-action="Edit"
+                   asp-route-id="@item.ItemId"
+                   class="btn btn-primary">Edit</a>
+                </td>
+                <td>
+                    <a asp-action="Delete"
+                   asp-route-id="@item.ItemId"
+                   class="btn btn-primary">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Add" class="btn btn-primary mb-3">Add Item</a>

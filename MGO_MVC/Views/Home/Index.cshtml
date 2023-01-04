@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "MGO Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Mountain Goat Outfitters</h1>
+</div>
+
+
+<h1>Admin</h1>
+<div class="list-group">
+    <a asp-controller="Item" asp-action="List"
+       class="list-group-item">Manage Items</a>
+    
+    <a asp-controller="Employee" asp-action="List"
+       class="list-group-item">Manage Employees</a>
+
+    <a asp-controller="Category" asp-action="List"
+       class="list-group-item">Manage Product Categories</a>
+    
+</div>

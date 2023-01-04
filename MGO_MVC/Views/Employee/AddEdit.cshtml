@@ -1,0 +1,41 @@
+﻿@model Employee
+@{
+    string title = ViewBag.Action + " Employee";
+    ViewBag.Title = title;
+}
+
+<h1>@ViewBag.Title</h1>
+
+<form asp-action="Save" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="row form-group">
+        <label asp-for="FirstName" class="col-sm-3">First Name</label>
+        <div class="col">
+            <input asp-for="FirstName" class="form-control">
+        </div>
+    </div>
+    <div class="row form-group">
+        <label asp-for="LastName" class="col-sm-3">Last Name</label>
+        <div class="col">
+            <input asp-for="LastName" class="form-control">
+        </div>
+    </div>
+    <div class="row form-group">
+        <label asp-for="Position" class="col-sm-3">Position</label>
+        <div class="col">
+            <input asp-for="Position" class="form-control">
+        </div>
+    </div>
+    <div class="row form-group">
+        <label asp-for="Commission" class="col-sm-3">Commission</label>
+        <div class="col">
+            <input asp-for="Commission" class="form-control">
+        </div>
+    </div>
+
+    <input type="hidden" asp-for="EmployeeId" />
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="List" class="btn btn-primary">Cancel</a>
+</form>

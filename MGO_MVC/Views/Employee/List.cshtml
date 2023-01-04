@@ -1,0 +1,60 @@
+﻿@model EmployeeListViewModel
+@{
+    ViewBag.Title = "Employee Manager";
+}
+
+<h1>@ViewBag.Title</h1>
+
+
+<nav class="nav nav-pills mb-3">
+<a asp-action="List" asp-route-filter="all"
+   class="nav-item nav-link
+        @(Model.Filter =="all" ? "active" : "")">All Employees</a>
+
+<a asp-action="List" asp-route-filter="manager"
+   class="nav-item nav-link
+       @(Model.Filter =="manager" ? "active" : "")">Managing Employees</a>
+
+<a asp-action="List" asp-route-filter="buyer/seller"
+   class="nav-item nav-link
+       @(Model.Filter =="buyer/seller" ? "active" : "")">Buyer and Seller</a>
+
+<a asp-action="List" asp-route-filter="seller"
+   class="nav-item nav-link
+@(Model.Filter == "seller" ? "active" : "")">Sellers</a>
+
+
+</nav>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Comission</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model.Employees)
+        {
+            <tr>
+                <td>@employee.FirstName @employee.LastName</td>
+                <td>@employee.Position</td>
+                <td>@employee.Commission</td>
+                <td>
+                    <a asp-action="Edit"
+                   asp-route-id="@employee.EmployeeId"
+                   class="btn btn-primary">Edit</a>
+                </td>
+                <td>
+                    <a asp-action="Delete"
+                   asp-route-id="@employee.EmployeeId"
+                   class="btn btn-primary">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Add" class="btn btn-primary mb-3">Add Employee</a>
